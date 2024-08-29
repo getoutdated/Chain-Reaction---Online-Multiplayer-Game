@@ -1,0 +1,530 @@
+@import url('https://fonts.googleapis.com/css2?family=Oxanium:wght@200;400&display=swap');
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Oxanium';
+  background: linear-gradient(107.56deg, #71798A 0%, #454A55 100%);
+}
+
+#container {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  width: 1382px;
+  height: 618px;
+  box-shadow: rgba(0,0,0,0.6) 0px 5px 15px;
+  background: linear-gradient(106.57deg, #1A1B1F 0%, #182430 100%);
+  border-radius: 50px;
+}
+
+.gameArena {
+  display: flex;
+  perspective: 400px;
+  position: relative;
+  background: radial-gradient(50% 73.44% at 50% 50.06%, #434343 0%, #000000 100%);
+  border: 1px solid #7D7D7D;
+  box-sizing: border-box;
+  box-shadow: 0px 8px 25px 5px #000000;
+  border-radius: 31px;
+  flex-basis: 65%;
+  margin: 24px 34px;
+  
+  .gameGrid {
+    display: none;
+    flex-wrap: wrap;
+    transform-style: preserve-3d;
+    position: absolute;
+
+    &.front {
+      transform: translateZ(30px);
+    }
+
+    &.back {
+      transform: translateZ(0px);
+    }
+ 
+    .grid {
+      margin: 0;
+      padding: 0;
+      outline: solid 1px rgb(255, 255, 255);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: blue;
+      font-size: xx-large;
+      user-select: none;
+    }
+  }
+
+  .preGame {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+
+    .gameName {
+      font-family: SF Distant Galaxy;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 65px;
+      line-height: 65px;
+      display: flex;
+      align-items: flex-end;
+      text-align: center;
+      color: #B1B1BE;
+      text-shadow: 12px 12px 9px #000000, 3px 3px 0px black, -3px -3px 0px black, -3px 3px 0px black, 3px -3px 0px black;
+      width: 100%;
+      flex-basis: 60%;
+      padding-bottom: 50px;
+      justify-content: center;
+    }
+
+    #isReady {
+      width: 160px;
+      height: 55px;
+      font-size: 30px;
+      font-family: oxanium;
+      box-shadow: 0px 4px 30px 5px #000000;
+      border-radius: 14px;
+      border: none;
+      transition-duration: 300ms;
+
+      &.nactive {
+        background: #FF0000;
+      }
+
+      &.active {
+        background: #39FF14;
+      }
+      
+      &.nactive:hover {
+        background: #39ff14;
+        border: solid 2px #FF0000;
+      }
+
+      &.active:hover {
+        background: #FF0000;
+        border: solid 2px #39FF14;
+      }
+    }
+
+    .announceText {
+      color: #f3f3f3;
+      font-size: 30px;
+      text-align: center;
+      font-family: oxanium;
+      flex-basis: 20%;
+    }
+
+    .main_group {
+      position: absolute;
+      /* display: none; */
+      z-index: -1;
+      width: 420px;
+      transform: translateX(-2%) translateY(-53%);
+    }
+  }
+}
+
+.playerArea {
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.81) 0%, rgba(67, 67, 67, 0) 91.94%);
+  border: 1px solid #7D7D7D;
+  box-sizing: border-box;
+  box-shadow: 0px 5px 25px 5px #000000;
+  border-radius: 31px;
+  flex-basis: 26%;
+  margin: 24px 24px 24px 24px;
+  display: flex;
+  flex-direction: column;
+
+  .heading {
+    margin-left: 30px;
+    margin-top: 10px;
+    font-family: Oxanium;
+    color: white;
+    font-size: 40px;
+    line-height: 1;
+  }
+
+  .divider {
+    background: #FFFFFF;
+    border: 0.25px solid #FFFFFF;
+    transform: matrix(0.85, 0, 0, 0.1, 0, 0);
+    margin-top: 0;
+    width: 100%;
+  }
+
+  .player {
+    margin-left: 30px;
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    position: relative;
+
+    .playerDP {
+      background: #C4C4C4;
+      border-radius: 30px;
+      height: 30px;
+      width: 50px;
+    }
+
+    .playerName {
+      font-family: Oxanium;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 27px;
+      color: #FFFFFF;
+      margin-left: 20px;
+    }
+
+    .playerStatus {
+      width: 15px;
+      height: 15px;
+      background-color: #ff3d3d;
+      border-radius: 50%;
+      vertical-align: middle;
+      border: 1px solid #ddd;
+      appearance: none;
+      -webkit-appearance: none;
+      position: absolute;
+      top: 4px;
+      left: 38px;
+
+      &:checked {
+        background-color: greenyellow;
+      }
+    }
+  }
+
+  .typeBox {
+    background: linear-gradient(262.95deg, #222224 0%, #444651 100%);
+    border: 1px solid rgba(255, 255, 255, 0.41);
+    box-sizing: border-box;
+    box-shadow: -35px -35px 130px rgba(31, 69, 117, 0.46);
+    border-radius: 0px 0px 31px 31px;
+    margin-top: auto;
+    height: 50px;
+    display: flex;
+    align-items: center;
+
+    input {
+      background: none;
+      border: none;
+      font-family: 'Oxanium';
+      font-size: 25px;
+      margin-left: 30px;
+      outline: none;
+      color: white;
+    }
+  }
+}
+
+/*
+.chatbox {
+  display: flex;
+  border: solid 2px green;
+  flex-basis: 30%;
+  flex-direction: column;
+
+  .messageContainer {
+    flex-basis: 80%;
+    margin: 20px;
+    padding: 20px;
+    overflow: auto;
+    max-height: 500px;
+    background: rgba(21, 23, 28, 0.5);
+
+    .message {
+      width: 80%;
+      max-width: 250px;
+      padding: 5px 20px;
+      border-radius: 25px;
+      color: #f3f3f3;
+      margin-bottom: 10px;
+      clear: both;
+
+      &.flag {
+        float: right;
+      }
+
+      .sender {
+        border-bottom: solid 1px;
+        font-weight: 600;
+        font-style: italic;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+      }
+
+      .messageBody {
+        margin-bottom: 10px;
+        word-break: break-all;
+      }
+
+      .eta {
+        font-size: x-small;
+      }
+    }
+  }
+
+  .textingArea {
+    display: flex;
+    align-items: center;
+    flex-basis: 20%;
+
+    .toSend {
+      flex-basis: 80%;
+      margin-left: 20px;
+    }
+  }
+}
+
+.messageContainer::-webkit-scrollbar
+{
+	width: 4px;
+	background-color: #F5F5F5;
+  border-radius: 20px;
+}
+
+.messageContainer::-webkit-scrollbar-thumb
+{
+	border-radius: 20px;
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+	background-color: rgba(85,85,85,0.5);
+}*/
+
+// Balls css
+
+/* Balls CSS ---->  */
+
+.div2b {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: fit-content;
+  width: fit-content;
+}
+
+#dirrrr {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/*Spheres*/
+.ldng {
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  box-shadow: 0px 1px 3px 1px, 1px -7px 10px 0px inset #454545;
+}
+
+/* Rotation CSS */
+
+@-webkit-keyframes rotateSphere /* Safari and Chrome */ {
+  from {
+    -webkit-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+@keyframes rotateSphere {
+  from {
+    -ms-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  to {
+    -ms-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -webkit-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+.rotateSphere {
+  -webkit-animation: rotateSphere 2s linear infinite;
+  -moz-animation: rotateSphere 2s linear infinite;
+  -ms-animation: rotateSphere 2s linear infinite;
+  -o-animation: rotateSphere 2s linear infinite;
+  animation: rotateSphere 2s linear infinite;
+}
+
+.overlapHorizontal {
+  position: relative;
+  left: -7px;
+}
+
+.overlapVertical {
+  position: relative;
+  top: -9px;
+  left: 5px;
+}
+
+.div3b {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: fit-content;
+  width: fit-content;
+  flex-direction: column;
+}
+
+/* rotateZ - for 3balls */
+
+@-webkit-keyframes rotating-box /* Safari and Chrome */ {
+  from {
+    -webkit-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+@keyframes rotating-box {
+  from {
+    -ms-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  to {
+    -ms-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -webkit-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+.rotating-box {
+  -webkit-animation: rotating-box 2s linear infinite;
+  -moz-animation: rotating-box 2s linear infinite;
+  -ms-animation: rotating-box 2s linear infinite;
+  -o-animation: rotating-box 2s linear infinite;
+  animation: rotating-box 2s linear infinite;
+}
+
+/* translation up */
+
+@-webkit-keyframes rt-up /* Safari and Chrome */ {
+  to {
+    -webkit-transform: translateY(-80px);
+    -o-transform: translateY(-80px);
+    transform: translateY(-80px);
+  }
+}
+
+@keyframes rt-up {
+  to {
+    -ms-transform: translateY(-80px);
+    -moz-transform: translateY(-80px);
+    -webkit-transform: translateY(-80px);
+    -o-transform: translateY(-80px);
+    transform: translateY(-80px);
+  }
+}
+.rt-up {
+  -webkit-animation: rt-up 0.4s linear;
+  -moz-animation: rt-up 0.4s linear;
+  -ms-animation: rt-up 0.4s linear;
+  -o-animation: rt-up 0.4s linear;
+  animation: rt-up 0.4s linear;
+}
+
+/* translation down */
+
+@-webkit-keyframes rt-down /* Safari and Chrome */ {
+  to {
+    -webkit-transform: translateY(80px);
+    -o-transform: translateY(80px);
+    transform: translateY(80px);
+  }
+}
+
+@keyframes rt-down {
+  to {
+    -ms-transform: translateY(80px);
+    -moz-transform: translateY(80px);
+    -webkit-transform: translateY(80px);
+    -o-transform: translateY(80px);
+    transform: translateY(80px);
+  }
+}
+.rt-down {
+  -webkit-animation: rt-down 0.4s linear;
+  -moz-animation: rt-down 0.4s linear;
+  -ms-animation: rt-down 0.4s linear;
+  -o-animation: rt-down 0.4s linear;
+  animation: rt-down 0.4s linear;
+}
+
+/* translation left */
+
+@-webkit-keyframes rt-left /* Safari and Chrome */ {
+  to {
+    -webkit-transform: translateX(-80px);
+    -o-transform: translateX(-80px);
+    transform: translateX(-80px);
+  }
+}
+
+@keyframes rt-left {
+  to {
+    -ms-transform: translateX(-80px);
+    -moz-transform: translateX(-80px);
+    -webkit-transform: translateX(-80px);
+    -o-transform: translateX(-80px);
+    transform: translateX(-80px);
+  }
+}
+.rt-left {
+  -webkit-animation: rt-left 0.4s linear;
+  -moz-animation: rt-left 0.4s linear;
+  -ms-animation: rt-left 0.4s linear;
+  -o-animation: rt-left 0.4s linear;
+  animation: rt-left 0.4s linear;
+}
+
+/* translation right */
+
+@-webkit-keyframes rt-right /* Safari and Chrome */ {
+  to {
+    -webkit-transform: translateX(80px);
+    -o-transform: translateX(80px);
+    transform: translateX(80px);
+  }
+}
+
+@keyframes rt-right {
+  to {
+    -ms-transform: translateX(80px);
+    -moz-transform: translateX(80px);
+    -webkit-transform: translateX(80px);
+    -o-transform: translateX(80px);
+    transform: translateX(80px);
+  }
+}
+.rt-right {
+  -webkit-animation: rt-right 0.4s linear;
+  -moz-animation: rt-right 0.4s linear;
+  -ms-animation: rt-right 0.4s linear;
+  -o-animation: rt-right 0.4s linear;
+  animation: rt-right 0.4s linear;
+}
